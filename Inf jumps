@@ -1,0 +1,33 @@
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+local Window = OrionLib:MakeWindow({Name = "Zephyrs Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+-- Creating a tab
+local Tab = Window:MakeTab({
+	Name = "Tab 1",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+-- Adding a section within the tab
+local Section = Tab:AddSection({
+	Name = "LocalPlayer"
+})
+
+-- Creating a notification
+OrionLib:MakeNotification({
+	Name = "Welcome!",
+	Content = "Notification content... what will it say??",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+-- Adding a button to the tab
+Tab:AddButton({
+	Name = "Button!",
+	Callback = function()
+		local player = game.Players.LocalPlayer
+		if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+			player.Character.Humanoid.WalkSpeed = 200
+		end
+	end
+})
